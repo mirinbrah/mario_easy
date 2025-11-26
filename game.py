@@ -18,8 +18,8 @@ class Game:
 
         self.all_sprites = pygame.sprite.Group()
         self.obstacles = pygame.sprite.Group()
-        self.player = None
-        self.castle = None
+        self.player = Player(50, GROUND_LEVEL)
+        self.castle = Castle(700, GROUND_LEVEL)
 
         self.start_new_game()
 
@@ -27,10 +27,6 @@ class Game:
         self.game_state = "PLAYING"
         self.all_sprites.empty()
         self.obstacles.empty()
-
-        self.player = Player(50, GROUND_LEVEL)
-        self.castle = Castle(700, GROUND_LEVEL)
-
         self.create_spikes([300, 450, 500])
 
         self.all_sprites.add(self.player)
