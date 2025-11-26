@@ -20,7 +20,8 @@ class Game:
         self.obstacles = pygame.sprite.Group()
         self.player = Player(50, GROUND_LEVEL)
         self.castle = Castle(700, GROUND_LEVEL)
-
+        self.all_sprites.add(self.player)
+        self.all_sprites.add(self.castle)
         self.start_new_game()
 
     def start_new_game(self):
@@ -28,9 +29,6 @@ class Game:
         self.all_sprites.empty()
         self.obstacles.empty()
         self.create_spikes([300, 450, 500])
-
-        self.all_sprites.add(self.player)
-        self.all_sprites.add(self.castle)
 
     def create_spikes(self, x_positions):
         for x in x_positions:
