@@ -1,7 +1,8 @@
 import pygame
-
+from castle import Castle
 from settings import *
 from player import Player
+from spike import Spike
 
 class Game:
     def __init__(self):
@@ -12,8 +13,20 @@ class Game:
         self.font = pygame.font.Font(None, 48)
         self.play = True
 
+
         self.all_sprites = pygame.sprite.Group()
+        self.obstacles = pygame.sprite.Group()
+
         self.player = Player(50, GROUND_LEVEL)
+        self.castle = Castle(700, GROUND_LEVEL)
+        self.all_sprites.add(self.castle)
+
+        spike_positions = [300, 450, 500]
+        for pos_x in spike_positions:
+            spike = Spike(pos_x, GROUND_LEVEL)
+            self.obstacles.add(spike)
+            self.all_sprites.add(spike)
+
         self.all_sprites.add(self.player)
 
     def update(self):
@@ -37,5 +50,3 @@ class Game:
             self.draw()
             self.clock.tick(FPS)
         pygame.quit()
-
-
