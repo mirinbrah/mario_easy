@@ -51,3 +51,8 @@ class Player(pygame.sprite.Sprite):
         self.get_input()
         self.apply_gravity()
         self.check_collisions()
+
+    def reset(self):
+        self.rect.x = self.start_pos[0]
+        self.rect.bottom = self.start_pos[1]
+        self.vel_y = 0
